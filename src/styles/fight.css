@@ -1,13 +1,12 @@
 
-.game-dialog {
+.dialog {
   width: 80%;
   max-width: 600px;
-  height: 100px;
+  height: 80px;
   background-color: white;
   padding: 10px;
-  font-size: 14px;
-  line-height: 1.5;
-  text-align: left;
+  text-align: center;
+  font-size: 18px;
   position: absolute;
   bottom: 20px;
   left: 50%;
@@ -24,19 +23,23 @@
   display: flex;
   position: relative;
   border-radius: 10px;
+  background-image: url(https://i.pinimg.com/736x/16/53/35/16533595d7f56bfd42948a9378b05f9e.jpg);
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .enemy {
   width: 250px;
   height: 250px;
   position: absolute;
-  top: 0px;
+  top: 10px;
   right: 0px;
 }
 
 .player-container {
   position: absolute;
-  bottom: 0px;
+  bottom: 10px;
   display: flex;
   left: 0px;
   align-items: end;
@@ -51,7 +54,7 @@
   margin-left: 20px;
   margin-bottom: 20px;
   display: flex;
-  gap: 20px
+  gap: 20px;
 }
 
 button {
@@ -90,7 +93,9 @@ button:active {
 .card-details {
   text-align: center;
   list-style: none;
-  padding: 0;
+  padding: 10px;
+  border-radius: 10px;
   margin: 0;
   font-size: 14px;
+  background-color: white;
 }
