@@ -27,5 +27,9 @@ document.querySelectorAll(".card").forEach((button, index) => {
 
 function setCharacter(character) {
   localStorage.setItem("selected_character", JSON.stringify(character));
+  localStorage.setItem(
+    "enemy",
+    JSON.stringify(characters[Math.floor(Math.random() * characters.length)])
+  );
   window.location.href = "fight.html";
 }
