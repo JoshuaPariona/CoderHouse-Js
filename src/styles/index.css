@@ -1,0 +1,23 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #b8fcd3;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #c47816;
+  text-align: center;
+}
+
+.character-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 70px;
+  padding: 20px;
+  justify-content: center;
+}
