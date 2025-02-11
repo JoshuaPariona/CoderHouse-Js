@@ -27,4 +27,5 @@ document.querySelectorAll(".card").forEach((button, index) => {
 
 function setCharacter(character) {
   localStorage.setItem("selected_character", JSON.stringify(character));
+  window.location.href = "fight.html";
 }
