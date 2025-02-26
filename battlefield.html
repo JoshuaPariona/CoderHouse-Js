@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entrega Final - Joshua Pariona</title>
+    <link rel="stylesheet" href="src/styles/index.css">
+    <link rel="stylesheet" href="src/styles/battlefield.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="column1">
+        <img class="title" src="./src/res/battlefield_title.png" alt="Elige un campo de batalla"></img>
+        <div class="audio-container">
+          <audio id="audio" controls loop>
+            <source src="./src/res/battlefield.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+          </audio>
+        </div>  
+      </div>
+      <div class="column2">
+        <div class="maps-container"></div>  
+        <button class="map-name">Nombre del mapa</button>
+      </div>
+    </div>
+    <script type="module" src="src/battlefield.js"></script>
+  </body>
+</html>

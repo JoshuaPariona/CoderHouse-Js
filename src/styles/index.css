@@ -1,23 +1,54 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #b8fcd3;
   display: flex;
-  flex: 1;
+  margin: 0;
+  padding: 0;
   flex-direction: column;
-  padding: 2rem;
+  background-image: url('../res/background.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #c47816;
-  text-align: center;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 50px;
 }
 
-.character-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 70px;
-  padding: 20px;
+.audio-container {
+  display: flex;
   justify-content: center;
+  margin-bottom: 50px;
+}
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.page-container button {
+  background-color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-top: 40px
+}
+
+.page-container button:hover {
+  background-color: #ebfc06;
+  transform: scale(1.1);
+}
+
+.page-container button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #ffffff;
+  transform: none;
 }

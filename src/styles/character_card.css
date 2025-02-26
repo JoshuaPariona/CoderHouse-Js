@@ -1,12 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  align-items: center;
+}
+
 .card {
-  width: 250px;
   border: none;
-  padding: 0;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
   overflow: hidden;
-  background-color: #fff;
+  background-color: #ffffffb2;
   cursor: pointer;
   transition: transform 0.2s;
 }
@@ -15,15 +22,40 @@
   transform: scale(1.05);
 }
 
+.character-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+@media (max-width: 1024px) {
+  .character-container {
+    grid-template-columns: repeat(3, 1fr); 
+  }
+}
+
+@media (max-width: 768px) {
+  .character-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .card-image-container{
   position: relative;
   overflow: hidden;
 }
 
 .card-background {
-  width: 100%;
+  width: 80%;
   height: 200px;
   object-fit: cover;
+  filter: blur(5px);
+  opacity: 0.5;
+}
+
+.card:hover .card-foreground {
+  filter: drop-shadow(10px 10px 10px rgba(255, 238, 0, 0.5));
 }
 
 .card-foreground {
@@ -32,6 +64,8 @@
   transform: translateX(-50%);
   object-fit: cover;
   position: absolute;
+  filter: drop-shadow(10px 10px 10px rgba(255, 255, 255, 0.5));
+  transition: filter 0.3s ease-in-out;
 }
 
 .card-details {
