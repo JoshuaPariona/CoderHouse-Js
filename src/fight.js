@@ -1,17 +1,19 @@
-setDialogue("Tu turno, elige un movimiento");
+let player = JSON.parse(localStorage.getItem("selected_character"));
+let enemy = JSON.parse(localStorage.getItem("enemy"));
+
 document.querySelector(".player").innerHTML = playerCard();
 document.querySelector(".enemy").innerHTML = enemyCard();
 
-function getCharacter() {
-  return JSON.parse(localStorage.getItem("selected_character"));
-}
+setDialogue("Tu turno, elige un movimiento");
 
-function getEnemy() {
-  return JSON.parse(localStorage.getItem("enemy"));
+document.body.style.backgroundImage = `url(${getMap().image})`;
+
+function getMap() {
+  return JSON.parse(localStorage.getItem("map"));
 }
 
 function playerCard() {
-  const { name, ki, image } = getCharacter();
+  const { name, ki, image } = player;
   return `
       <div class="card">
         <img class="card-foreground" src="${image}" alt="${name}"></img>
@@ -24,7 +26,7 @@ function playerCard() {
 }
 
 function enemyCard() {
-  const { name, ki, image } = getEnemy();
+  const { name, ki, image } = enemy;
   return `
       <div class="card">
         <img class="card-foreground" src="${image}" alt="${name}"></img>
@@ -49,12 +51,11 @@ function ableActions() {
 }
 
 function setDialogue(text) {
-  document.querySelector(".dialog").innerText = text;
+  document.querySelector(".dialog-text").innerText = text;
 }
 
 document.querySelector(".attack").addEventListener("click", () => {
   disableActions();
-  const player = getCharacter();
   setDialogue("Has elegido atacar");
   setTimeout(() => {
     enemyAction();
@@ -67,7 +68,6 @@ document.querySelector(".attack").addEventListener("click", () => {
 
 document.querySelector(".defend").addEventListener("click", () => {
   disableActions();
-  const player = getCharacter();
   setDialogue("Has elegido defenderte");
   setTimeout(() => {
     enemyAction();
@@ -80,7 +80,6 @@ document.querySelector(".defend").addEventListener("click", () => {
 
 document.querySelector(".ki").addEventListener("click", () => {
   disableActions();
-  const player = getCharacter();
   setDialogue("Has elegido cargar ki");
   setTimeout(() => {
     enemyAction();
@@ -93,21 +92,25 @@ document.querySelector(".ki").addEventListener("click", () => {
 
 document.querySelector(".transform").addEventListener("click", () => {
   disableActions();
-  const player = getCharacter();
   setDialogue("Has elegido transformarte");
-  const nextTransformation = (player.current_transformation ?? -1) + 1;
-  const maxTransformation = player.transformations.length - 1;
-  localStorage.setItem(
-    "selected_character",
-    JSON.stringify({
-      current_transformation: Math.min(nextTransformation, maxTransformation),
+  if (player.transformations.length > 0) {
+    const nextTransformation = (player.current_transformation ?? -1) + 1;
+    const maxTransformation = player.transformations.length - 1;
+    player = {
       ...player,
-      ...player.transformations[
+      image:
+        player.transformations[Math.min(nextTransformation, maxTransformation)]
+          .image,
+      name: player.transformations[
         Math.min(nextTransformation, maxTransformation)
-      ],
-    })
-  );
-  document.querySelector(".player").innerHTML = playerCard();
+      ].name,
+      ki: player.transformations[
+        Math.min(nextTransformation, maxTransformation)
+      ].ki,
+      current_transformation: Math.min(nextTransformation, maxTransformation),
+    };
+    document.querySelector(".player").innerHTML = playerCard();
+  }
   setTimeout(() => {
     enemyAction();
     setTimeout(() => {
@@ -118,7 +121,6 @@ document.querySelector(".transform").addEventListener("click", () => {
 });
 
 function enemyAction() {
-  const enemy = getEnemy();
   const actions = ["attack", "defend", "ki", "transform"];
   const action = actions[Math.floor(Math.random() * actions.length)];
   switch (action) {
@@ -131,25 +133,30 @@ function enemyAction() {
     case "ki":
       setDialogue(`El enemigo ha elegido cargar ki`);
       break;
-    case "transform":{
+    case "transform": {
       setDialogue(`El enemigo ha elegido transformarse`);
-      const enemy = getEnemy();
-      const nextTransformation = (enemy.current_transformation ?? -1) + 1;
-      const maxTransformation = enemy.transformations.length - 1;
-      localStorage.setItem(
-        "enemy",
-        JSON.stringify({
+      if (enemy.transformations.length > 0) {
+        const nextTransformation = (enemy.current_transformation ?? -1) + 1;
+        const maxTransformation = enemy.transformations.length - 1;
+        enemy = {
+          ...enemy,
+          image:
+            enemy.transformations[
+              Math.min(nextTransformation, maxTransformation)
+            ].image,
+          name: player.transformations[
+            Math.min(nextTransformation, maxTransformation)
+          ].name,
+          ki: player.transformations[
+            Math.min(nextTransformation, maxTransformation)
+          ].ki,
           current_transformation: Math.min(
             nextTransformation,
             maxTransformation
           ),
-          ...enemy,
-          ...enemy.transformations[
-            Math.min(nextTransformation, maxTransformation)
-          ],
-        })
-      );
-      document.querySelector(".enemy").innerHTML = enemyCard();
+        };
+        document.querySelector(".enemy").innerHTML = enemyCard();
+      }
       break;
     }
     default:

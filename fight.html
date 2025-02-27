@@ -4,21 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Entrega Final - Joshua Pariona</title>
-    <link rel="stylesheet" href="src/styles/index.css">
-    <link rel="stylesheet" href="src/styles/fight.css">
+    <link rel="stylesheet" href="src/styles/index.css" />
+    <link rel="stylesheet" href="src/styles/fight.css" />
   </head>
   <body>
-    <div class="dialog"></div>
-    <div class="combat-container">
-      <div class="enemy"></div>
-      <div class="player-container">
-        <div class="player"></div>
-        <div class="actions">
-          <button class="attack">Ataque</button>
-          <button class="defend">Defenza</button>
-          <button class="ki">Cargar Ki</button>
-          <button class="transform">Transformarce</button>
+    <div class="container">
+      <div class="combat-container">
+        <div class="enemy"></div>
+        <div class="player-container">
+          <div class="player"></div>
+          <div class="actions">
+            <button class="attack">Ataque</button>
+            <button class="defend">Defenza</button>
+            <button class="ki">Cargar Ki</button>
+            <button class="transform">Transformarce</button>
+          </div>
         </div>
+      </div>
+      <div class="dialog">
+        <div class="dialog-text"></div>
+        <div class="audio-container">
+          <audio id="audio" autoplay controls loop>
+            <source src="./src/res/fight.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+          </audio>
+        </div> 
       </div>
     </div>
     <script type="module" src="src/fight.js"></script>

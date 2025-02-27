@@ -1,30 +1,32 @@
-
 .dialog {
-  width: 80%;
-  max-width: 600px;
-  height: 80px;
-  background-color: white;
+  width: 70%;
+  height: 150px;
+  margin: auto;
+  margin-bottom: 20px;
+  background-color: rgb(255, 251, 20);
   padding: 10px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-size: 18px;
-  position: absolute;
   bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
   border-radius: 10px;
   box-shadow: 4px 4px 12px rgb(207, 207, 207);
 }
 
+.audio-container {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
 .combat-container {
+  flex: 1;
   width: 100%;
-  height: 450px;
-  background-color: white;
-  padding: 10px;
+  height: 180%;
   display: flex;
   position: relative;
-  border-radius: 10px;
-  background-image: url(https://i.pinimg.com/736x/16/53/35/16533595d7f56bfd42948a9378b05f9e.jpg);
-  background-size: cover; 
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -34,25 +36,25 @@
   height: 250px;
   position: absolute;
   top: 10px;
-  right: 0px;
+  right: 10%;
 }
 
 .player-container {
   position: absolute;
   bottom: 10px;
   display: flex;
-  left: 0px;
-  align-items: end;
+  flex-direction: column;
+  left: 10%;
 }
 
 .player {
   width: 250px;
   height: 250px;
+  margin-bottom: 20px;
 }
 
 .actions {
-  margin-left: 20px;
-  margin-bottom: 20px;
+  margin: 20px;
   display: flex;
   gap: 20px;
 }
@@ -81,7 +83,7 @@ button:active {
   display: flex;
   height: 100%;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
 }
 
 .card-foreground {
@@ -98,4 +100,19 @@ button:active {
   margin: 0;
   font-size: 14px;
   background-color: white;
+  margin-top: 20px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
 }

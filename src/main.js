@@ -1,6 +1,3 @@
-const audio = document.getElementById("audio");
-audio.volume = 0.5;
-
 const base_url = "https://dragonball-api.com/api";
 
 const prevButton = document.getElementById("prev");
@@ -8,6 +5,8 @@ const nextButton = document.getElementById("next");
 
 let prev = "";
 let next = "";
+
+const sound = new Audio("src/res/select-character.mp3"); 
 
 function setPage(url) {
   fetch(url)
@@ -79,10 +78,14 @@ function characterCard(character) {
 }
 
 async function onCharacterSelect(characterId) {
-  console.log(characterId);
   const selectedCharacter = await getCharacter(characterId);
   localStorage.setItem("selected_character", JSON.stringify(selectedCharacter));
-  window.location.href = "battlefield.html";
+  sound.pause();
+  sound.currentTime = 0;
+  sound.play();
+  setTimeout(() => {
+    window.location.href = "battlefield.html";
+  }, 500);
 }
 
 function getCharacter(characterId) {

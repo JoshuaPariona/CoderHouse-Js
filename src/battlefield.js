@@ -2,6 +2,8 @@ const base_url = "https://dragonball-api.com/api";
 
 let selectedMapId = 2;
 
+const sound = new Audio("src/res/select-map.mp3"); 
+
 document.querySelector(".map-name").addEventListener("click", async () => {
   const map = await getMap(selectedMapId);
   map.characters = undefined;
@@ -39,6 +41,9 @@ function mapCard(map) {
 }
 
 function setSelectedMap(mapId,mapName) {
+  sound.pause();
+  sound.currentTime = 0;
+  sound.play();
   selectedMapId = mapId;
   document
     .querySelector(".map-card-selected")
