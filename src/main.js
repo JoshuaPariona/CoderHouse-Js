@@ -6,7 +6,14 @@ const nextButton = document.getElementById("next");
 let prev = "";
 let next = "";
 
-const sound = new Audio("src/res/select-character.mp3"); 
+const sound = new Audio("src/res/select-character.mp3");
+
+const audio = document.getElementById("audio");
+if (audio.paused) {
+  audio
+    .play()
+    .catch((error) => console.error("Error al reproducir el audio:", error));
+}
 
 function setPage(url) {
   fetch(url)
