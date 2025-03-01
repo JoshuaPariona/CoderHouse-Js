@@ -66,6 +66,14 @@
     flex-direction: column;
     align-items: center;
   }
+
+  .maps-container {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    height: 220px;
+  }
 }
 
 body {

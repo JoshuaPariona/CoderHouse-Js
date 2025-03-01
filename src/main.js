@@ -8,6 +8,18 @@ let next = "";
 
 const sound = new Audio("src/res/select-character.mp3");
 
+Toastify({
+  text: "Elige un personaje para comenzar la batalla,\n\nRecuerda que puedes pausar la musica en cualquien momento\n\n¡Buena suerte!",
+  duration: 10000,
+  gravity: "bottom",
+  position: "right",
+  style: {
+    background: "linear-gradient(to right,rgb(252, 94, 94),rgb(206, 197, 74))",
+    color: "black",
+    fontWeight: "bold",
+  }
+}).showToast();
+
 const audio = document.getElementById("audio");
 if (audio.paused) {
   audio
